@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jubayer Ahmed - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #1E1E1E;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            box-shadow: 8px 8px 16px #0a0a0a,
+                       -8px -8px 16px #323232;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 10px #0a0a0a,
+                       -5px -5px 10px #323232;
+            cursor: pointer;
+        }
+
+        .social-icons a:hover {
+            box-shadow: inset 5px 5px 10px #0a0a0a,
+                       inset -5px -5px 10px #323232;
+        }
+
+        .info-boxes, .domain-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box, .domain-box {
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 8px 8px 16px #0a0a0a,
+                       -8px -8px 16px #323232;
+        }
+
+        .info-box:hover, .domain-box:hover {
+            box-shadow: inset 8px 8px 16px #0a0a0a,
+                       inset -8px -8px 16px #323232;
+        }
+
+        .skills-section {
+            margin: 3rem 0;
+        }
+
+        .skill-item {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 8px 8px 16px #0a0a0a,
+                       -8px -8px 16px #323232;
+        }
+
+        .skill-item:hover {
+            box-shadow: inset 8px 8px 16px #0a0a0a,
+                       inset -8px -8px 16px #323232;
+        }
+
+        .certificate-link {
+            color: #00f3ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #1a1a1a, #242424);
+            box-shadow: 3px 3px 6px #0a0a0a,
+                       -3px -3px 6px #323232;
+            cursor: pointer;
+        }
+
+        .certificate-link:hover {
+            color: #2ecc71;
+            box-shadow: inset 3px 3px 6px #0a0a0a,
+                       inset -3px -3px 6px #323232;
+        }
+
+        .domain-button {
+            background: #00f3ff;
+            color: #1E1E1E;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            display: inline-block;
+            box-shadow: 3px 3px 6px #0a0a0a,
+                       -3px -3px 6px #323232;
+            transition: all 0.3s ease;
+        }
+
+        .domain-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 10px #0a0a0a,
+                       -5px -5px 10px #323232;
+        }
+        
+   /* Domain Status Tags */
+    .domain-box {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .domain-status {
+        position: absolute;
+        top: 10px;
+        right: -30px;
+        transform: rotate(45deg);
+        width: 120px;
+        text-align: center;
+        padding: 3px 0;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: #2ecc71;
+        color: #fff;
+    }
+
+    .domain-status.under-developing {
+        background: #f39c12;
+        right: -35px;
+    }
+
+    .domain-status.suspended {
+        background: #e74c3c;
+        right: -25px;
+    }
+
+    .domain-status.active {
+        background: #2ecc71;
+    }
+
+    .domain-status.inactive {
+        background: #95a5a6;
+    }
+
+    .domain-status.expired {
+        background: #34495e;
+    }
+
+    .domain-status.transferred {
+        background: #9b59b6;
+    }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #00f3ff;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        h3 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        p {
+            color: #cccccc;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: #1E1E1E;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 8px 8px 16px #0a0a0a,
+                       -8px -8px 16px #323232;
+            max-width: 300px;
+        }
+
+        .popup-button {
+            margin-top: 1rem;
+            padding: 0.5rem 2rem;
+            background: #00f3ff;
+            border: none;
+            border-radius: 8px;
+            color: #1E1E1E;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-button:hover {
+            transform: scale(1.05);
+            box-shadow: 3px 3px 6px #0a0a0a,
+                       -3px -3px 6px #323232;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .info-boxes, .domain-boxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <h3 id="popupMessage">Message</h3>
+            <button class="popup-button" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="profile-section">
+            <img src="https://i.ibb.co.com/b5dHxJhh/IMG-20250127-WA0102.jpg" alt="Jubayer Ahmed" class="profile-pic">
+            <h1>Jubayer Ahmed</h1>
+            <p>Full of English </p>
+            
+            <div class="social-icons">
+                <a onclick="handleSocial('facebook', event)"><i class="fab fa-facebook"></i></a>
+                <a onclick="handleSocial('telegram', event)"><i class="fab fa-telegram"></i></a>
+                <a onclick="handleSocial('twitter', event)"><i class="fab fa-twitter"></i></a>
+                <a onclick="handleSocial('instagram', event)"><i class="fab fa-instagram"></i></a>
+                <a onclick="handleSocial('linkedin', event)"><i class="fab fa-linkedin"></i></a>
+                <a onclick="handleSocial('whatsapp', event)"><i class="fab fa-whatsapp"></i></a>
+                <a onclick="handleSocial('github', event)"><i class="fab fa-github"></i></a>
+                <a onclick="handleSocial('tiktok', event)"><i class="fab fa-tiktok"></i></a>
+                <a onclick="handleSocial('pinterest', event)"><i class="fab fa-pinterest"></i></a>
+            </div>
+
+            <div class="info-box">
+                <p>📧 admin@mja.my.id</p>
+            </div>
+        </section>
+
+        <div class="info-boxes">
+            <div class="info-box">
+                <h3>Country</h3>
+                <p>🇧🇩 Bangladesh</p>
+            </div>
+            <div class="info-box">
+                <h3>Phone</h3>
+                <p>+880 9638-112748</p>
+            </div>
+            <div class="info-box">
+                <h3>Date of Birth</h3>
+                <p>November 27, 2007</p>
+            </div>
+            <div class="info-box">
+                <h3>Address</h3>
+                <p>Keraniganj, Dhaka</p>
+            </div>
+        </div>
+
+<!-- Update the Domain Boxes section like this -->
+<section class="skills-section">
+    <h2>Owned Domains</h2>
+    <div class="domain-boxes">
+        <div class="domain-box">
+            <div class="domain-status under-developing">Under Developing</div>
+            <h3>CapitlHub.com</h3>
+            <p>Financial News</p>
+            <a href="https://www.CapitlHub.com" target="_blank" class="domain-button">View</a>
+        </div>
+        <div class="domain-box">
+            <div class="domain-status under-developing">Under Developing</div>
+            <h3>ICTQuestionBank.com</h3>
+            <p>ICT Question Bank</p>
+            <a href="https://www.ictquestionbank.com" target="_blank" class="domain-button">View</a>
+        </div>
+        <div class="domain-box">
+            <div class="domain-status under-developing">Under Developing</div>
+            <h3>ICTQuestionBank.one</h3>
+            <p>ICT Question Bank</p>
+            <a href="https://www.ictquestionbank.one" target="_blank" class="domain-button">View</a>
+        </div>
+        <div class="domain-box">
+            <div class="domain-status suspended">Suspended</div>
+            <h3>WTFis.Fun</h3>
+            <p>Fun Time!</p>
+            <a href="https://www.wtfis.fun" target="_blank" class="domain-button">View</a>
+        </div>
+        <div class="domain-box">
+            <div class="domain-status active">Active</div>
+            <h3>ContentZone.site</h3>
+            <p>Tried Everything</p>
+            <a href="https://www.contentzone.site" target="_blank" class="domain-button">View</a>
+        </div>
+    </div>
+</section>
+
+        <section class="skills-section">
+            <h2>Technical Skills</h2>
+            <div class="skill-item">
+                <h3>HTML & CSS</h3>
+                <a href="/" target="_blank" class="certificate-link">View Certificate</a>
+            </div>
+            <div class="skill-item">
+                <h3>JavaScript</h3>
+                <a href="/" target="_blank" class="certificate-link">View Certificate</a>
+            </div>
+            <div class="skill-item">
+                <h3>React</h3>
+                <a href="#" class="certificate-link" onclick="handleCertificate('react', event)">View Certificate</a>
+            </div>
+            <div class="skill-item">
+                <h3>Node.js</h3>
+                <a href="#" class="certificate-link" onclick="handleCertificate('node', event)">View Certificate</a>
+            </div>
+            <div class="skill-item">
+                <h3>Python</h3>
+                <a href="#" class="certificate-link" onclick="handleCertificate('python', event)">View Certificate</a>
+            </div>
+            <div class="skill-item">
+                <h3>Data Analysis</h3>
+                <a href="#" class="certificate-link" onclick="handleCertificate('data', event)">View Certificate</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Jubayer Ahmed. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Social Media Handling
+        function handleSocial(platform, event) {
+            event.preventDefault();
+            if(platform === 'facebook') {
+                window.open('https://www.facebook.com/StarGamer.MJYT', '_blank');
+            }
+            else if(platform === 'telegram') {
+                window.open('https://t.me/STARGAMERMJ', '_blank');
+            }
+            else {
+                showPopup('Not on this platform');
+            }
+        }
+
+        // Certificate Handling
+        function handleCertificate(skill, event) {
+            event.preventDefault();
+            if(skill !== 'html' && skill !== 'javascript') {
+                showPopup('Still Learning');
+            }
+        }
+
+        // Popup Handling
+        function showPopup(message) {
+            document.getElementById('popupMessage').textContent = message;
+            document.getElementById('popupOverlay').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if(e.target === this) closePopup();
+        });
+
+        // Initialize social links
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            const icon = link.querySelector('i');
+            const platform = icon.className.split('-')[2];
+            
+            // Set proper hrefs for valid platforms
+            if(platform === 'facebook') {
+                link.href = 'https://www.facebook.com/StarGamer.MJYT';
+            }
+            else if(platform === 'telegram') {
+                link.href = 'https://t.me/STARGAMERMJ';
+            }
+        });
+    </script>
+</body>
+</html>
